@@ -4,12 +4,18 @@ import '../styles/testmonials.css'
 const data = [
   {
     id:1,
+    image: "https://verified.cv:3000/v2/ims/image/16206865447531",
+    title: "Full Stack Web Development",
+    verify: "https://certificates.almabetter.com/en/verify/16206865447531?ref=email"
+  },
+  {
+    id:2,
     image: "https://verified.cv:3000/v2/ims/image/30777657480210",
     title: "Frontend Development",
     verify: "https://certificates.almabetter.com/en/verify/30777657480210"
   },
   {
-    id:1,
+    id:3,
     image: "https://verified.cv:3000/v2/ims/image/83966941100680",
     title: "Backend Development",
     verify: "https://certificates.almabetter.com/en/verify/83966941100680"
