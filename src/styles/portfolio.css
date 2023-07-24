@@ -1,0 +1,50 @@
+.project__container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+}
+
+.project__item{
+    background: var(--color-bg-varient);
+    padding: 1.3rem;
+    border-radius: 2rem;
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.project__item:hover{
+    border-color: var(--color-primary-varient);
+    background: transparent;
+}
+
+
+.project__image{
+    border-radius: 1.5rem;
+    overflow: hidden;
+}
+
+.project__item h3, h5 {
+    margin: 0.8rem 0 0.8rem ;
+    text-align: center;
+}
+
+.project__item-btn{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem ;
+    justify-content: space-between;
+}
+
+@media screen and (max-width:1024px) {
+    .project__container{
+        grid-template-columns: 1fr 1fr;
+        gap:1.2rem;
+    }
+  }
+  
+  @media screen and (max-width:600px) {
+    .project__container{
+        grid-template-columns: 1fr;
+        gap:1rem;
+    }
+  }
