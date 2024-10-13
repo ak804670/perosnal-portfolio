@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import '../styles/contact.css'
 import {BiLogoGmail} from 'react-icons/bi'
-import{RiWhatsappFill} from 'react-icons/ri'
-import {FaTelegram} from 'react-icons/fa'
+// import{RiWhatsappFill} from 'react-icons/ri'
+import {FaTelegram, FaLinkedin} from 'react-icons/fa'
 import { useRef } from 'react';
 import emailjs from 'emailjs-com';
 import { ToastContainer, toast } from 'react-toastify';
@@ -59,18 +59,22 @@ const detailsAreMissing=()=>{
           <BiLogoGmail className='contact__option-icon'/>
           <h4>Email</h4>
           <h5>ak804670@gmail.com</h5>
-          <a href='mailto:ak804670@gmail.com' target='_blank'>Send a message</a>
+          <a href='mailto:ak804670@gmail.com' target='_blank'>Send a mail</a>
          </article>
         
 
         
-         <article className="contact__option">
+         {/* <article className="contact__option">
           <RiWhatsappFill className='contact__option-icon'/>
           <h4>WhatsApp</h4>
           <a href='https://api.whatsapp.com/send?phone+917992470122'>Send a message</a>
-         </article>
+         </article> */}
         
-
+         <article className="contact__option">
+          <FaLinkedin className='contact__option-icon'/>
+          <h4>LinkedIn</h4>
+          <a href='https://www.linkedin.com/in/anish-kumar-thakur-478001185/' target='_blank'>Let's Connect</a>
+         </article>
      
          <article className="contact__option">
           <FaTelegram className='contact__option-icon'/>

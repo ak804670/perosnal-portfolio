@@ -1,0 +1,160 @@
+.work-experience__timeline {
+    position: relative;
+    padding: 2rem 0;
+     display: flex; 
+    flex-direction: column; 
+  }
+  
+  .work-experience__timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background-color: var(--color-primary);
+  }
+  
+  .work-experience__item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    padding: 1rem 2rem;
+  }
+  
+  .work-experience__item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  
+  .work-experience__item .dot {
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url(/public/up.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+  }
+
+  .work-experience__item> .work-experience__item-content:hover{
+    background: transparent;
+    border-color: var(--color-primary-varient);
+    cursor: default;
+}
+  
+  .work-experience__item-content {
+    background: var(--color-bg-varient);
+    border: 1px solid var(--color-primary-varient);
+    border-radius: 1rem;
+    padding:  1.5rem 1.5rem 0 1.5rem;
+    width: 40%;
+    transition: var(--transition);
+  }
+
+  .work-experience__item-content > .sub-heading{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .work-experience__item h3 {
+    color: var(--color-primary);
+    /* margin-bottom: 1rem; */
+  }
+  
+  .work-experience__item p {
+    color: var(--color-light);
+  }
+
+  .work-experience__item .company-logo {
+    width: 69px;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 38px;
+    margin-top: -60px;
+  }
+
+  .work-experience__desc-toggler {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .work-experience-toggle-btn {
+    margin: 0.5rem 0;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: var(--color-primary); 
+    font-weight: bold;
+    align-items: center;
+  }
+
+  .work-experience-toggle-icon {
+    margin-left: 4px;
+    font-size: 30px;
+    margin-bottom: -27px;
+  }
+
+  .work-experience-description{
+    margin-top: 10px;
+  }
+  .work-experience-description>p{
+    color: white;
+
+  }
+  .work-experience-description >h4{
+    margin: 5px 0 10px  0;
+    color: var(--color-primary); 
+  }
+  
+
+
+  .work-experience-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem; 
+  }
+  
+  .tech-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .work-experience-details-icon {
+    margin-right: 0.5rem;
+    color: var(--color-primary); 
+  }
+  
+  .tech-item {
+    width: 100%;
+  }
+  
+  
+  @media screen and (max-width: 1024px) {
+    .work-experience__item {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .work-experience__item:nth-child(even) {
+      flex-direction: column;
+    }
+  
+    .work-experience__item-content {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .work-experience__item {
+      padding: 1rem;
+    }
+  }
+  
+
+  

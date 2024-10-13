@@ -122,6 +122,14 @@ const Experience = () => {
                          
              </article>
 
+             <article className='experience_details'>
+             <MdVerified className='experience_details-icon'/>
+             <div>
+             <h4>Redis</h4>
+              <small className='text-ligth'>Intermediate</small> 
+             </div>
+                         
+             </article>
           </div>
 
         </div>

@@ -125,6 +125,12 @@ img{
 }
 
 
+.chat-switch-bottom{
+  bottom: 29px !important;
+  position: fixed;
+  right: 40px;
+}
+
 @media screen and (max-width:1024px) {
   .container{
     width: var(--container-width-md);
