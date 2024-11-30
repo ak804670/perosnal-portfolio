@@ -38,7 +38,7 @@ const Certificate = () => {
                       
                     <article className='certificate__item'>
                                 <div className="certificate__image">
-                                  <img src={data.image} alt={data.title}/>
+                                  <img src={data.image} alt={data.title} draggable="false"/>
                                 </div>
                                   <h3>{data.title}</h3>
                                     <div className="certificate__item-btn">

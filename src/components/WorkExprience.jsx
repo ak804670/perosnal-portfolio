@@ -16,8 +16,7 @@ const WorkExperience = () => {
         "Bootstrap",
         "Node.js",
         "Flask",
-        "MySQL",
-        "Wappler"
+        "MySQL"
       ],
       exp_summary: `Led dynamic web application development encompassing frontend design (HTML, CSS, JavaScript, Bootstrap), robust backend systems (Node.js, Flask), and MySQL database management. Streamlined development using Wappler, optimizing project timelines while maintaining coding standards. Collaborated on project management, issue resolution, and embraced continuous learning, staying updated with emerging technologies to enhance team capabilities and deliver innovative solutions.`,
       start_date: "Sep-2023",
@@ -83,7 +82,7 @@ const ExperienceItem = ({ exp }) => {
     <div className="work-experience__item">
       <div className="dot"></div>
       <div className="work-experience__item-content">
-        <img src={exp.logo} alt={`${exp.company_name} logo`} className="company-logo" />
+        <img src={exp.logo} alt={`${exp.company_name} logo`} className="company-logo" draggable="false"/>
         <h3>{exp.role} @ {exp.company_name}</h3>
         <div className='sub-heading'>
           <small>{exp.start_date} - {exp.end_date} | {exp.location}</small>
