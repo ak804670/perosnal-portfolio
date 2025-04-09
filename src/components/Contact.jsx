@@ -33,7 +33,7 @@ import axios from 'axios';
   
     try {
       setSending(true);
-      const response = await axios.post('http://api.worldofdevtool.world/api/send-mail', {
+      const response = await axios.post('https://api.worldofdevtool.world/api/send-mail', {
         to: 'ak804670@protonmail.ch',
         subject: `New message from ${name}`,
         text: `
