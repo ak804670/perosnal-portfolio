@@ -4,9 +4,10 @@ import {BiLogoGmail} from 'react-icons/bi'
 // import{RiWhatsappFill} from 'react-icons/ri'
 import {FaTelegram, FaLinkedin} from 'react-icons/fa'
 import { useRef } from 'react';
-import emailjs from 'emailjs-com';
+// import emailjs from 'emailjs-com';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
  const Contact = () => {
 
@@ -18,33 +19,67 @@ import 'react-toastify/dist/ReactToastify.css';
   const [contact,setContact]= useState("")
   const [message,setMessage]= useState("")
   const [value,setValue]=useState("")
+  const [sending,setSending]=useState(false)
 
   const form = useRef();
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
-
-    emailjs.sendForm("service_cmy6js5","template_d8c61cc", form.current, 'Ob3A51I-3EhDs14RZ')
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
+  
+    if (!name || !email || !message) {
+      setValue("Please fill in required fields");
+      return;
+    }
+  
+    try {
+      setSending(true);
+      const response = await axios.post('http://api.worldofdevtool.world/api/send-mail', {
+        to: 'ak804670@protonmail.ch',
+        subject: `New message from ${name}`,
+        text: `
+          Name: ${name}
+          Email: ${email}
+          Contact: ${contact}
+          Message: ${message}
+        `,
+        html: `
+          <h3>New Message from Contact Form</h3>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Contact:</strong> ${contact || "N/A"}</p>
+          <p><strong>Message:</strong><br/>${message}</p>
+        `
       });
+  
+      if (response.status === 200) {
+        setValue("Message sent successfully!");
+        notify()
+        // optionally clear the form
+        setName('');
+        setEmail('');
+        setContact('');
+        setMessage('');
+        setSending(false);
+      }
+    } catch (error) {
+      setSending(false);
+      console.error("Error sending message:", error);
+      setValue("Failed to send message. Please try again.");
+    }
   };
+  
 
 const detailsAreMissing=()=>{
   notify1()
   setValue("")
 }
 
-  const handleClick=()=>{
-    setContact("");
-    setEmail("");
-    setMessage("");
-    setName("");
-    notify()
-    setValue("send")
-  }
+  // const handleClick=()=>{
+  //   setContact("");
+  //   setEmail("");
+  //   setMessage("");
+  //   setName("");
+  // }
 
 
 
@@ -91,7 +126,9 @@ const detailsAreMissing=()=>{
             <input type="text" name="email" value={email} onChange={(e)=>{ setEmail(e.target.value)}} placeholder='Your Email' required />
             <input type="text" name="contact" value= {contact} onChange={(e)=>{ setContact(e.target.value)}} placeholder='Contact No (optional)'  />
             <textarea name="message" rows="7" value={message}  onChange={(e)=>{ setMessage(e.target.value)}} placeholder='your message' required />
-            <button type='submit' className='btn btn-primary' value={value} onClick={(name.length===0 || email.lenght===0 || message.length===0)?detailsAreMissing:handleClick} >Send message</button>
+            <button type='submit' className='btn btn-primary spinner-container ' value={value} onClick={(name.length===0 || email.lenght===0 || message.length===0)?detailsAreMissing:null} disabled={sending}>Send message
+            {sending && <div className="spinner text-primary ms-2"></div>}
+            </button>
         </form>
         <ToastContainer
         position="top-center"
