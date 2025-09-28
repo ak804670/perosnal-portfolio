@@ -10,6 +10,7 @@ import Certificate from './components/Certificate'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import WorkExprience from './components/WorkExprience';
+import ChatBot from './components/ChatBot';
 
 function App() {
   return (
@@ -18,14 +19,16 @@ function App() {
       {/* <Test/> */}
       <Header/>
       <Nav/>
-      <About/>
-      <Experience/>
-      <WorkExprience/>
+      <About className="block"/>
+      <Experience className="block"/>
+      <WorkExprience className="block"/>
       {/* <Services/> */}
-      <Portfolio/>
-      <Certificate/>
-      <Contact/>
-      <Footer/>
+      <Portfolio className="block"/>
+      <Certificate className="block"/>
+      <Contact className="block"/>
+      <ChatBot className="block"/>
+      <Footer className="block"/>
+
       {/* <div className="position-fixed chat-switch-bottom end-0 "> th</div> */}
     </div>
   );
