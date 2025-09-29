@@ -6,13 +6,13 @@ const ChatBot = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
-    const [isTyping, setIsTyping] = useState(true);
+    const [isTyping, setIsTyping] = useState(false);
     const socketRef = useRef(null);
     const messagesEndRef = useRef(null);
 
     useEffect(() => {
         const savedMessages = sessionStorage.getItem("chatMessages");
-        if (savedMessages) {
+        if (savedMessages && savedMessages.length) {
             setMessages(JSON.parse(savedMessages));
         }
     }, []);
