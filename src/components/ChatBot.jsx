@@ -12,6 +12,7 @@ const ChatBot = () => {
     name: '',
     email: '',
     phone: '',
+    lang: 'en'
   });
   const [hasWelcomeMessage, setHasWelcomeMessage] = useState(false); // Track welcome message
   const socketRef = useRef(null);
@@ -55,6 +56,7 @@ const ChatBot = () => {
         name: userInfo.name,
         email: userInfo.email,
         phone: userInfo.phone,
+        lang: userInfo.lang,
       },
     });
 
@@ -79,7 +81,7 @@ const ChatBot = () => {
       // Only add the message if it's not a duplicate welcome message
       if (
         data.sender === 'bot' &&
-        data.text.includes('Welcome') &&
+        data.messageType=== 'welcome' &&
         hasWelcomeMessage
       ) {
         console.log('Skipping duplicate welcome message');
@@ -87,7 +89,7 @@ const ChatBot = () => {
       }
       setMessages((prev) => [...prev, data]);
       // Update hasWelcomeMessage if this is a welcome message
-      if (data.sender === 'bot' && data.text.includes('Welcome')) {
+      if (data.sender === 'bot' && data.messageType=== 'welcome') {
         setHasWelcomeMessage(true);
       }
       setIsTyping(false);
@@ -146,6 +148,14 @@ const ChatBot = () => {
     sessionStorage.setItem('chatUserInfo', JSON.stringify(userInfo));
     setCaptureUser(true);
   };
+
+  const languageOptions = [
+    { value: 'en', label: 'English' },
+    { value: 'es', label: 'Spanish' },
+    { value: 'fr', label: 'French' },
+    { value: 'de', label: 'German' },
+    { value: 'hi', label: 'Hindi' }
+  ];
 
   return (
     <div className={`chatbot__container ${isOpen ? 'open' : ''}`}>
@@ -210,6 +220,19 @@ const ChatBot = () => {
               value={userInfo.phone}
               onChange={handleUserChange}
             />
+            <select
+              name="lang"
+              value={userInfo.lang}
+              onChange={handleUserChange}
+              required
+            >
+              <option value="" disabled>Select Language</option>
+              {languageOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
             <button type="submit" className="btn btn-primary">
               Start Chat
             </button>
