@@ -139,6 +139,9 @@
 }
 
 @media screen and (max-width: 600px) {
+  .chatbot__container{
+    bottom: 15% !important;
+  }
   .chatbot__window {
     width: 90vw;
     max-height: 90vh;
@@ -148,4 +151,33 @@
   .chatbot__open {
     padding: 0.6rem 1rem;
   }
+}
+
+
+.chatbot__capture-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 4rem  1rem;
+  background: var(--color-bg);
+
+}
+
+.chatbot__capture-form h3 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--color-white);
+}
+
+.chatbot__capture-form input {
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--color-primary-varient);
+  background: var(--color-bg-varient);
+  color: var(--color-white);
+}
+
+.chatbot__capture-form button {
+  margin-top: 0.5rem;
+  align-self: center;
 }
