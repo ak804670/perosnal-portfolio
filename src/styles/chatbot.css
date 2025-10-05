@@ -140,7 +140,7 @@
 
 @media screen and (max-width: 600px) {
   .chatbot__container{
-    bottom: 15% !important;
+    bottom: 6rem !important;
   }
   .chatbot__window {
     width: 90vw;
