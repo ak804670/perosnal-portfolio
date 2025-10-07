@@ -222,9 +222,9 @@ const ChatBot = () => {
                   key={index}
                   className={`chatbot__message ${msg.sender === 'bot' ? 'bot' : 'user'}`}
                 >
-                  <span className="chatbot__sender">
-                    {msg.sender === 'bot' ? 'Bot' : userInfo.name}
-                  </span>{' '}
+                  {/* <span className="chatbot__sender">
+                    {msg.sender === 'bot' ? 'Bot:' : userInfo.name}
+                  </span>{' '} */}
                   {msg.text}
                 </div>
               ))}
@@ -241,6 +241,7 @@ const ChatBot = () => {
                 value={input}
                 onChange={handleInputChange}
                 placeholder="Type a message..."
+                maxLength={150}
               />
               <button type="submit" className="btn btn-primary">
                 <svg
