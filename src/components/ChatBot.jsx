@@ -143,6 +143,11 @@ const ChatBot = () => {
       alert('Please enter your name and email to continue.');
       return;
     }
+     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(userInfo.email)) {
+      alert('Invalid email format. Please enter a valid email.');
+      return;
+    }
     sessionStorage.setItem('chatUserInfo', JSON.stringify(userInfo));
     setCaptureUser(true);
   };
