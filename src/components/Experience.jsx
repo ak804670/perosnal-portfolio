@@ -86,10 +86,28 @@ const Experience = () => {
              
              </article>
 
+              <article className='experience_details'>
+             <MdVerified className='experience_details-icon'/>
+             <div>
+             <h4>Python</h4>
+              <small className='text-ligth'>Intermediate</small> 
+             </div>
+             
+             </article>
+
              <article className='experience_details'>
              <MdVerified className='experience_details-icon'/>
              <div>
              <h4>ExpressJS</h4>
+              <small className='text-ligth'>Intermediate</small>
+             </div>
+              
+             </article>
+
+              <article className='experience_details'>
+             <MdVerified className='experience_details-icon'/>
+             <div>
+             <h4>Fast API</h4>
               <small className='text-ligth'>Intermediate</small>
              </div>
               
