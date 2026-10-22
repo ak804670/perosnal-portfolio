@@ -1,34 +1,64 @@
-nav{
-    background: rgba(0, 0, 0, 0.3);
-    width: max-content;
-    display: block;
-    padding: 0.7rem 1.7rem;
-    z-index: 2;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 2rem;
-    display: flex;
-    gap:0.8rem;
-    border-radius: 3rem;
-    backdrop-filter: blur(15px);
+nav.nav-dock {
+  background: rgba(15, 23, 42, 0.75);
+  width: max-content;
+  padding: 0.65rem 1.4rem;
+  z-index: 100;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1.8rem;
+  display: flex;
+  gap: 0.85rem;
+  border-radius: 3rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 245, 160, 0.1);
+  transition: var(--transition);
 }
 
-nav a{
-    background: transparent;
-    padding: 0.5rem;
-    border-radius: 50%;
-    display: flex;
-    color: var(--color-light);
-    font-size: 1.1rem;
+nav.nav-dock:hover {
+  border-color: rgba(0, 245, 160, 0.3);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 245, 160, 0.2);
 }
 
-nav a:hover{
-    background: rgba(0, 0, 0, 0.3);
+nav.nav-dock a {
+  background: transparent;
+  padding: 0.65rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-light);
+  font-size: 1.15rem;
+  position: relative;
+  transition: var(--transition);
 }
 
+nav.nav-dock a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
 
-nav a.active{
-    background: var(--color-bg);
-    color: var(--color-white);
+nav.nav-dock a.active {
+  background: linear-gradient(135deg, #00f5a0, #00d2ff);
+  color: #090d16;
+  box-shadow: 0 0 15px rgba(0, 245, 160, 0.5);
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 600px) {
+  nav.nav-dock {
+    padding: 0.45rem 0.75rem;
+    gap: 0.35rem;
+    bottom: 0.85rem;
+    max-width: 95vw;
+    box-sizing: border-box;
+  }
+
+  nav.nav-dock a {
+    padding: 0.45rem;
+    font-size: 0.95rem;
+  }
 }

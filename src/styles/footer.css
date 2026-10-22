@@ -1,3 +1,26 @@
-.footer{
-    text-align: center;
+.footer {
+  text-align: center;
+  padding: 4rem 1rem 7rem 1rem; /* comfortable spacing above the bottom nav dock */
+}
+
+.footer__signature {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-light);
+  letter-spacing: 0.03em;
+  transition: var(--transition);
+}
+
+.footer__signature:hover {
+  color: var(--color-primary);
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    padding: 3rem 1rem 6rem 1rem;
+  }
+
+  .footer__signature {
+    font-size: 1rem;
+  }
 }

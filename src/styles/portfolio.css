@@ -1,50 +1,318 @@
-.project__container{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
+.project__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+  width: 82%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.project__item{
-    background: var(--color-bg-varient);
-    padding: 1.3rem;
-    border-radius: 2rem;
-    border: 1px solid transparent;
-    transition: var(--transition);
+/* Out-of-the-box Card Container matching preferred design */
+.project__item {
+  position: relative;
+  background: rgba(13, 20, 36, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.6rem;
+  padding: 1.25rem 1.25rem 1.4rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
 }
 
-.project__item:hover{
-    border-color: var(--color-primary-varient);
-    background: transparent;
+/* Subtle Light Sweep Reflection on Hover */
+.project__item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(0, 245, 160, 0.09) 60%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+  pointer-events: none;
 }
 
-
-.project__image{
-    border-radius: 1.5rem;
-    overflow: hidden;
+.project__item:hover:not(.project__item--abandoned)::before {
+  left: 150%;
 }
 
-.project__item h3, h5 {
-    margin: 0.8rem 0 0.8rem ;
-    text-align: center;
+/* Glowing Cyber-Emerald Border & Elevation on Hover */
+.project__item:hover:not(.project__item--abandoned) {
+  transform: translateY(-6px);
+  border-color: #00f5a0;
+  box-shadow: 0 0 25px rgba(0, 245, 160, 0.22), 
+              0 16px 36px -8px rgba(0, 0, 0, 0.7);
 }
 
-.project__item-btn{
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem ;
-    justify-content: space-between;
+/* Enclosed Image Box inside the Card */
+.project__image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  background: #090e17;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media screen and (max-width:1024px) {
-    .project__container{
-        grid-template-columns: 1fr 1fr;
-        gap:1.2rem;
-    }
+.project__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.project__item:hover:not(.project__item--abandoned) .project__image img {
+  transform: scale(1.05);
+}
+
+/* Dark Floating Pill Badge at Top-Right of Image */
+.project__badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #f1f5f9;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.3rem 0.78rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  letter-spacing: 0.02em;
+  z-index: 2;
+}
+
+.project__badge--abandoned {
+  background: rgba(239, 68, 68, 0.22);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #fca5a5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Card Content */
+.project__content {
+  padding-top: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project__title {
+  color: #00f5a0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.55rem;
+  letter-spacing: -0.01em;
+  transition: text-shadow 0.3s ease;
+}
+
+.project__item:hover:not(.project__item--abandoned) .project__title {
+  text-shadow: 0 0 16px rgba(0, 245, 160, 0.4);
+}
+
+.project__description {
+  font-size: 0.86rem;
+  color: #94a3b8;
+  line-height: 1.58;
+  margin-bottom: 1.15rem;
+  flex: 1;
+}
+
+/* Out-of-the-box Dark Emerald Pill Tags with Hover Animation */
+.project__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+  margin-bottom: 1.25rem;
+}
+
+.project__tag {
+  background: rgba(0, 245, 160, 0.06);
+  border: 1px solid rgba(0, 245, 160, 0.28);
+  color: #00f5a0;
+  padding: 0.24rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+}
+
+.project__tag:hover {
+  background: rgba(0, 245, 160, 0.18);
+  border-color: #00f5a0;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 245, 160, 0.25);
+}
+
+/* Balanced Action Buttons */
+.project__item-btn {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.project-btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  border-radius: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.project-btn svg {
+  font-size: 0.95rem;
+  transition: transform 0.2s ease;
+}
+
+/* Vibrant Solid Cyan/Teal Live Demo Button with Glow */
+.project-btn--live {
+  background: #00e5bf;
+  color: #090d16 !important;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 4px 16px rgba(0, 229, 191, 0.35);
+}
+
+.project-btn--live:hover {
+  background: #00f5a0;
+  box-shadow: 0 6px 22px rgba(0, 229, 191, 0.55);
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.project-btn--live:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* Translucent Dark Slate Code Button */
+.project-btn--code {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #cbd5e1;
+}
+
+.project-btn--code:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Backend Service Pill (AI RAG System) */
+.project-btn--backend {
+  background: rgba(99, 102, 241, 0.16);
+  border: 1px solid rgba(129, 140, 248, 0.4);
+  color: #a5b4fc;
+  cursor: default;
+  box-shadow: none;
+}
+
+.project-btn--backend:hover {
+  transform: none;
+}
+
+/* Disabled State for Abandoned Projects */
+.project-btn--disabled {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  color: #64748b;
+  cursor: not-allowed;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Abandoned Card Styling */
+.project__item--abandoned {
+  opacity: 0.52;
+  filter: grayscale(40%);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.project__item--abandoned:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.project__item--abandoned .project__image img {
+  filter: grayscale(40%) brightness(0.85);
+}
+
+.project__item--abandoned:hover .project__image img {
+  transform: none !important;
+}
+
+/* Responsive */
+@media screen and (max-width: 1100px) {
+  .project__container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+    width: 90%;
   }
-  
-  @media screen and (max-width:600px) {
-    .project__container{
-        grid-template-columns: 1fr;
-        gap:1rem;
-    }
+}
+
+@media screen and (max-width: 680px) {
+  .project__container {
+    grid-template-columns: 1fr;
+    gap: 1.3rem;
+    width: 92%;
   }
+
+  .project__item {
+    padding: 1.15rem;
+    border-radius: 1.4rem;
+  }
+
+  .project__image {
+    height: 185px;
+    border-radius: 1rem;
+  }
+
+  .project__title {
+    font-size: 1.2rem;
+  }
+
+  .project__description {
+    font-size: 0.85rem;
+  }
+
+  .project-btn {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.82rem;
+  }
+}

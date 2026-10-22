@@ -1,46 +1,60 @@
-import React from 'react'
-import '../styles/header.css'
-import CTA from './CTA'
-import me from '../assets/me.png'
-import HeaderSocial from './HeaderSocial'
+import React from 'react';
+import '../styles/header.css';
+import CTA from './CTA';
+import me from '../assets/me.png';
+import HeaderSocial from './HeaderSocial';
 import { TypeAnimation } from 'react-type-animation';
+import { FiChevronDown } from 'react-icons/fi';
 
 const Header = () => {
   return (
-    <header>
+    <header id="Home">
       <div className="container header__container">
-        <h5>Hello, I am</h5>
-        <h1>Anish Kumar</h1>
-{/*         <h5 className="text-light">Full Stack Developer</h5> */}
-        <h4>
-         <TypeAnimation
-      sequence={[
-        'Full Stack Developer',
-        1500,
-        'Master of Vanilla JS & Beyond',
-        1500,
-        'React + Node Full-Stack Pro',
-        1500,
-        'From Pixels to APIs, I Build It All',
-        1500
-      ]}
-      wrapper="span"
-      speed={50}
-      style={{ fontSize: '2em', display: 'inline-block' }}
-      repeat={Infinity}
-    />
-          </h4>
-        <CTA/>
-        <HeaderSocial/>
-        <div className="me">
-          <img src={me} alt="selfphoto" draggable="false"/>
+        <div className="header__badge-wrapper">
+          <span className="badge status-badge">
+            <span className="status-dot"></span> Available for new opportunities
+          </span>
         </div>
 
-        <a href="#Contact" className='scroll__down'>Scroll Down</a>
-      </div>
-      
-      </header>
-  )
-}
+        <h5>Hello, I'm</h5>
+        <h1 className="header__name text-gradient">Anish Kumar</h1>
 
-export default Header
+        <div className="header__type-container">
+          <TypeAnimation
+            sequence={[
+              'Full Stack Developer (3+ Years)',
+              1500,
+              'React & Node.js Engineer',
+              1500,
+              'AI & RAG Pipeline Architect',
+              1500,
+              'Database Optimization & Scalable Web Apps',
+              1500,
+            ]}
+            wrapper="span"
+            speed={50}
+            className="header__type-text"
+            repeat={Infinity}
+          />
+        </div>
+
+        <CTA />
+        <HeaderSocial />
+
+        <div className="me-wrapper">
+          <div className="me-glow"></div>
+          <div className="me">
+            <img src={me} alt="Anish Kumar" draggable="false" />
+          </div>
+        </div>
+
+        <a href="#About" className="scroll__down" aria-label="Scroll down to About section">
+          <span>Scroll Down</span>
+          <FiChevronDown className="scroll__down-icon" />
+        </a>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

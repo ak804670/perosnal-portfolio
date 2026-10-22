@@ -1,83 +1,256 @@
-header{
-    height: 100vh;
-    padding-top: 7rem;
-    overflow: hidden;
+header {
+  min-height: 100vh;
+  padding-top: 5.5rem;
+  overflow: hidden;
+  position: relative;
 }
 
-.header__container{
-
-    text-align: center;
-    height: 100%;
-    position: relative;
+.header__container {
+  text-align: center;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-
-.cta{
-    margin: 2.5rem;
-    display: flex;
-    gap: 1.2rem;
-    justify-content: center;
+.header__badge-wrapper {
+  margin-bottom: 1rem;
 }
 
-
-.header__social{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-    position: absolute;
-    left: 0;
-    bottom: 3rem;
-    font-size: 200%;
+.status-badge {
+  background: rgba(0, 245, 160, 0.08);
+  border: 1px solid rgba(0, 245, 160, 0.25);
+  box-shadow: 0 0 15px rgba(0, 245, 160, 0.15);
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
 }
 
-
-.header__social::after
-{
-    content: "";
-    width: 1px;
-    height: 2rem;
-    background-color: var(--color-primary);
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px var(--color-primary);
+  animation: pulse 2s infinite;
 }
 
-
-.me{
-    background: linear-gradient(var(--color-primary), transparent);
-    width: 22rem;
-    height: 30rem;
-    position: absolute;
-    left:calc(50% - 11rem);
-    margin-top: 4rem;
-    border-radius: 12rem 12rem 0 0;
-    overflow: hidden;
-    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
-}
-
-
-.scroll__down{
-    position: absolute;
-    right: -2.3rem;
-    bottom: 5rem;
-    transform: rotate(90deg);
-    font-weight: 300;
-    font-size: 0.9rem;
-}
-
-
-
-@media screen and (max-width:1024px) {
-    header{
-        height: 68vh;
-    }
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 245, 160, 0.7);
   }
-  
-  @media screen and (max-width:600px) {
-    header{
-        height: 100vh;
-    }
-  
-    .header__social,
-    .scroll__down{
-        display: none;
-    }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 8px rgba(0, 245, 160, 0);
   }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 245, 160, 0);
+  }
+}
+
+.header__name {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin: 0.2rem 0;
+}
+
+.header__type-container {
+  min-height: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.header__type-text {
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  display: inline-block;
+  text-shadow: 0 0 20px rgba(0, 245, 160, 0.3);
+}
+
+.cta {
+  margin: 2rem 0 2.5rem 0;
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  z-index: 2;
+}
+
+.header__social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  position: absolute;
+  left: 0;
+  bottom: 3.5rem;
+  font-size: 1.3rem;
+  z-index: 2;
+}
+
+.header__social a {
+  color: var(--color-light);
+  background: var(--glass-bg);
+  border: 1px solid var(--color-border);
+  padding: 0.65rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.header__social a:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 245, 160, 0.25);
+}
+
+.header__social::after {
+  content: "";
+  width: 2px;
+  height: 2.5rem;
+  background: linear-gradient(180deg, var(--color-primary), transparent);
+}
+
+.me-wrapper {
+  position: relative;
+  width: 25.5rem;
+  height: 30.5rem;
+  margin-top: 1.25rem;
+}
+
+.me-glow {
+  position: absolute;
+  inset: -12px;
+  background: radial-gradient(circle, rgba(0, 245, 160, 0.28) 0%, rgba(0, 210, 255, 0.12) 50%, transparent 75%);
+  border-radius: 14rem 14rem 2.2rem 2.2rem;
+  filter: blur(18px);
+  z-index: 0;
+}
+
+.me {
+  background: linear-gradient(180deg, rgba(0, 245, 160, 0.3) 0%, rgba(17, 24, 39, 0.8) 100%);
+  border: 1px solid rgba(0, 245, 160, 0.35);
+  width: 100%;
+  height: 100%;
+  border-radius: 14rem 14rem 2.2rem 2.2rem;
+  overflow: hidden;
+  padding: 1rem 1rem 0 1rem;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.me img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  transition: transform 0.5s ease;
+}
+
+.me:hover img {
+  transform: scale(1.03);
+}
+
+.scroll__down {
+  position: absolute;
+  right: -2rem;
+  bottom: 4rem;
+  transform: rotate(90deg);
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--color-light);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.scroll__down:hover {
+  color: var(--color-primary);
+}
+
+.scroll__down-icon {
+  transform: rotate(-90deg);
+  animation: bounceDown 1.5s infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: rotate(-90deg) translateX(0);
+  }
+  50% {
+    transform: rotate(-90deg) translateX(4px);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  header {
+    height: auto;
+    min-height: 85vh;
+    padding-top: 4rem;
+  }
+
+  .header__social,
+  .scroll__down {
+    display: none;
+  }
+
+  .me-wrapper {
+    width: 21rem;
+    height: 25.5rem;
+    max-width: 85vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    min-height: auto;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    overflow-x: hidden;
+  }
+
+  .header__name {
+    font-size: 2.1rem;
+  }
+
+  .header__type-text {
+    font-size: 1rem;
+  }
+
+  .cta {
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cta .btn {
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .header__social,
+  .scroll__down {
+    display: none !important;
+  }
+
+  .me-wrapper {
+    width: 17.5rem;
+    height: 22rem;
+    max-width: 88vw;
+    margin-top: 1rem;
+  }
+}

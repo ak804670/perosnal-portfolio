@@ -1,65 +1,132 @@
-.experience__container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.experience__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.experience__card {
+  position: relative;
+  background: rgba(13, 20, 36, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2.5rem 2.5rem;
+  border-radius: 1.6rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+/* Diagonal Light Sweep Reflection on Hover */
+.experience__card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(0, 245, 160, 0.09) 60%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: left 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.experience__card:hover::before {
+  left: 150%;
+}
+
+.experience__card:hover {
+  transform: translateY(-6px);
+  border-color: #00f5a0;
+  box-shadow: 0 0 25px rgba(0, 245, 160, 0.22), 
+              0 16px 36px -8px rgba(0, 0, 0, 0.7);
+}
+
+.experience__card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.experience__card-header h3 {
+  color: var(--color-white);
+  font-size: 1.35rem;
+}
+
+.experience__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 1.25rem;
+}
+
+.experience__details {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: var(--transition);
+}
+
+.experience__details:hover {
+  background: rgba(0, 245, 160, 0.05);
+  border-color: rgba(0, 245, 160, 0.2);
+  transform: translateX(4px);
+}
+
+.experience__skill-icon {
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.experience__skill-info h4 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-bottom: 0.1rem;
+}
+
+.experience__skill-info small {
+  font-size: 0.75rem;
+  color: var(--color-light);
+}
+
+@media screen and (max-width: 1024px) {
+  .experience__container {
+    grid-template-columns: 1fr;
     gap: 2rem;
-}
-
-.experience__container>div:hover{
-    background: transparent;
-    border-color: var(--color-primary-varient);
-    cursor: default;
-}
-.experience__container > div{
-    background: var(--color-bg-varient);
-    padding: 2.5rem 5rem;
-    border-radius: 2rem;
-    border:1px solid transparent;
-    transition: var(--transition);
-}
-
-.experience__container > div h3{
-    text-align: center;
-    margin-bottom: 2rem;
-    color: var(--color-primary);
-}
-
-.experience__content{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 2rem;
-
-}
-
-.experience_details{
-    display: flex;
-}
-
-.experience_details-icon{
-    margin-top: 6px;
-    margin-right: 1rem;
-    color: var(--color-primary);
-}
-
-@media screen and (max-width:1024px) {
-    .experience__container{
-        grid-template-columns: 1fr;
-    }
-    .experience__container > div{
-        width: 80%;
-        padding: 2rem;
-        margin: 0 auto ;
-    }
-    .experience__content{
-        padding: 1rem;
-    }
   }
-  
-  @media screen and (max-width:600px) {
-    .experience__container{
-        gap:1rem;
-    }
-    .experience__container > div{
-        width: 100%;
-        padding: 2rem 1rem;
-    }
+
+  .experience__card {
+    padding: 2rem 1.8rem;
   }
+}
+
+@media screen and (max-width: 600px) {
+  .experience__content {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .experience__card {
+    padding: 1.75rem 1.25rem;
+  }
+}

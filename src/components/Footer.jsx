@@ -1,13 +1,14 @@
-import React from 'react'
-import '../styles/footer.css'
+import React from 'react';
+import '../styles/footer.css';
+
 const Footer = () => {
   return (
-    <section>
-      <h4 className='footer'>
+    <footer className="footer">
+      <h4 className="footer__signature">
         Made with ❤️ from Anish
       </h4>
-    </section>
-  )
-}
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;
